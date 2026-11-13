@@ -1,0 +1,80 @@
+site_name: Evok documentation
+site_url: https://evok.readthedocs.io/
+site_author: Unipi technology
+site_description: API of Unipi controllers
+copyright: Copyright &copy; 2014 - 2024 Unipi technology
+repo_url: https://github.com/UnipiTechnology/evok
+edit_uri: edit/main/docs/
+theme:
+  icon:
+    repo: fontawesome/brands/github
+  name: material
+  features:
+    - content.action.edit
+    - navigation.expand
+    - navigation.footer
+    - navigation.instant
+    - navigation.instant.progress
+    - search.suggest
+    - toc.follow
+
+plugins:
+  - search
+  - privacy
+  - neoteroi.mkdocsoad:
+      use_pymdownx: true
+
+hooks:
+  - hooks/oad-redirects.py
+
+markdown_extensions:
+  - markdown_include.include:
+      base_path: docs
+  - admonition
+  - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/UnipiTechnology
+
+# built without a link in the menu, the changes of the API of Evok 3.1 against 3.0
+not_in_nav: |
+  /api-changes-dev-src.md
+
+# mkdocs will ignore these
+exclude_docs: |
+  .venv
+  .venv/**
+  pyproject.toml
+  requirements.in
+  requirements.txt
+  uv.lock
+
+extra_css:
+  - css/mkdocsoad.css
+
+nav:
+  - Introduction: index.md
+  - Installation: installation.md
+  - Configuration:
+    - General: configs/evok_configuration.md
+    - Aliases: configs/aliases.md
+    - HW definitions: configs/hw_definitions.md
+  - Security: security.md
+  - Available APIs: apis.md
+  - Device circuit: circuit.md
+  - OpenAPI spec: spec.md
+  - API examples:
+      - REST: apis/rest.md
+      - JSON: apis/json.md
+      - WebSocket: apis/websocket.md
+      - Bulk: apis/bulk.md
+      - Webhook: apis/webhook.md
+      - RPC: apis/rpc.md
+      - Sequencer: apis/sequencer.md
+      - MQTT: apis/mqtt.md
+  - Debugging: debugging.md
